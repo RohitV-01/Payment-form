@@ -1,0 +1,149 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment form</title>
+    
+    <style>
+        hr{
+            opacity:0% ;
+        }
+        *{
+    box-sizing: border-box; 
+}
+body{
+    margin: 15px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 15px;
+    padding: 8px;
+    
+}
+.container{
+    border-color: rgb(90, 89, 89);
+    border-width: 5px;
+    border-radius: 10px;
+    background-image: linear-gradient(black,grey,white);
+    padding: 5px 20px 15px 20px;
+}
+h1{
+    background-color: rgb(255, 255, 255) ;
+    padding: 15px;
+    text-align: center;
+    font-size: 50px;
+    border-style: solid;
+    border-width:5px;
+}
+h3{
+    background-color: rgb(167, 7, 7);
+    padding: 5px;
+    
+}
+fieldset{
+    border-radius: 5px;
+    border-color: black;
+    width: 20%;
+    align-content: center;
+}
+input[type="text"],
+input[type="email"],
+input[type="number"],
+input[type="password"]
+{
+    width: 100%;
+    border-color: rgb(102, 101, 101);
+    border-radius: 5px;
+    padding: 8px;
+    margin: 10px;
+
+}input[type="submit"]{
+    background-color: rgb(0, 255, 136);
+    padding: 10px;
+    border-radius:5px;
+    border-width: 1px;
+    cursor:pointer ;
+    width: 100%;
+}
+input[type="submit"]:hover{
+    background-color: aqua;
+}select, textarea{
+    width: 50%;
+    border-radius: 5px;
+    margin: 10px;
+    padding: 8px;
+    border-color: rgb(102, 101, 101);
+}
+        
+    </style>
+</head>
+<body>
+    <div class="container">
+    <form action="" method="post">
+    <h1>Payment Form</h1>
+    
+    <h3>User Information:-</h3>
+    <div class="Name"> Name: <sup>*</sup> <input type="text" required name="Name" ></div>
+    <hr>
+    <fieldset>
+        <legend>Gender <sup>*</sup></legend>
+    <div class="Gender">
+         Male <input type="radio" name="Gender" id="male" required>
+         Female <input type="radio" name="Gender" id="female" required>
+    </div>
+    </fieldset>
+    <hr>
+    <div class="address">
+       Address: <sup>*</sup> <textarea name="Address" id="address" cols="100" rows="8" placeholder="H no., Street, Area, Landmark " required></textarea>
+    </div>
+    <hr> <b>
+    <div class="email">
+        Email: <sup>*</sup> <input type="email" name="Email" id="email" required placeholder="
+        Shyam@gmial.com">
+    </div>
+    <hr>
+    <div class="pincode">
+        Pincode: <sup>*</sup><input type="number" name="Pincode" id="pincode" required>
+    </div>
+    <hr>
+    <h3>Payment Information:-</h3>
+    <div class="Cardtype">
+        Cardtype: <sup>*</sup> <select name="Card_type" id="Card_type" required>
+            <option value="Not selected">--select your card type--</option>
+            <option value="Visa">Visa</option>
+            <option value="Rupay">Rupay</option>
+            <option value="Mastercard">Mastercard</option>
+        </select>
+    </div>
+    <hr>
+    <div class="cardnumber">
+        Card Number:  <sup>*</sup><input type="number" name="Card_number" id="Card_number" placeholder="xxxx-xxxx-xxxx-xxxx" required>
+    </div>
+    <hr>
+    <div class="expdate">
+        Expiration Date: <sup>*</sup> <input type="date" name="Expiraton_date" id="Expiraton_date" required>
+    </div>
+    <hr>
+    <div class="CVV">
+        CVV: <sup>*</sup> <input type="password" name="CVV" id="CVV" placeholder="123" required>
+    </div>
+    <hr>
+    <div class="submit">
+        <input type="submit" value="PAY NOW" required>
+    </div>
+</form>
+</div>
+<script>
+    const scriptURL = 'https://docs.google.com/spreadsheets/d/1MFUCr8MaDL7Ev3tKGUPaqzMZsb-0vFHW/edit?usp=sharing&ouid=108285396897919118618&rtpof=true&sd=true'
+    const form = document.forms['google-sheet']
+  
+    form.addEventListener('submit', e => {
+      e.preventDefault()
+      fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+        .then(response => alert("Thanks for Contacting us..! We Will Contact You Soon..."))
+        .catch(error => console.error('Error!', error.message))
+    })
+  </script>
+
+
+</body>
+</html>
